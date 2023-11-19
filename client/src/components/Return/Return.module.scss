@@ -1,0 +1,23 @@
+@import '../../assets/scss/_colors.scss';
+@import '../../assets/scss/_typos.scss';
+@import '../../assets/scss/_normalize.scss';
+@import '../../assets/responsive/_responsive.scss';
+
+.Return {
+   position: absolute;
+   top: 1rem;
+   left: 1rem;
+   width: 5rem;
+   height: 5rem;
+   a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      background-color: #1d5c68;
+      color: white;
+      text-decoration: none;
+      border-radius: 50%;
+   }
+}
