@@ -74,7 +74,6 @@ router.get('/user-role',authMiddleware,  async (req, res) => {
 });
 
 router.get('/users', authMiddleware, async (req, res) => {
-    console.log("Reached /users route");
     const connection = await mysql.createConnection(dbConfig);
     try {
         const [rows] = await connection.execute('SELECT * FROM users');

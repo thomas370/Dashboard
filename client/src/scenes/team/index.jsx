@@ -13,6 +13,7 @@ const Team = () => {
   const [userData, setUserData] = useState([]);
   const [loading, setLoading] = useState(true);
 
+
   const columns = [
     { field: "id", headerName: "ID" },
     { field: "username", headerName: "Name", flex: 1 },
@@ -71,7 +72,6 @@ const Team = () => {
         if (!token) {
           return;
         }
-
         const response = await fetch(process.env.REACT_APP_API_URL + "/users", {
           method: "GET",
           headers: {
