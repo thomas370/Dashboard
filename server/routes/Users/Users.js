@@ -73,5 +73,23 @@ router.get('/user-role',authMiddleware,  async (req, res) => {
     }
 });
 
+router.get('/users', authMiddleware, async (req, res) => {
+    console.log("Reached /users route");
+    const connection = await mysql.createConnection(dbConfig);
+    try {
+        const [rows] = await connection.execute('SELECT * FROM users');
+        console.log(rows);
+        res.json(rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error retrieving users');
+    } finally {
+        await connection.end();
+    }
+});
+
+
+
+
 
 module.exports = router;

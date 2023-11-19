@@ -15,6 +15,7 @@ import FAQ from "./scenes/faq";
 import Login from "./scenes/login/Login";
 import Register from "./scenes/register/Register";
 import Geography from "./scenes/geography";
+import Vacanow from "./scenes/articles/Vacanow/Vacanow";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import Calendar from "./scenes/calendar/calendar";
@@ -77,6 +78,10 @@ function App() {
               <Route path="/geography" element={
                 <PrivateRoute requiredRole="admin">
                 <Geography />
+                </PrivateRoute> } />
+              <Route path="/vacanow" element={
+                <PrivateRoute requiredRole="admin">
+                <Vacanow />
                 </PrivateRoute> } />
             </Routes>
           </main>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
+import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
@@ -18,13 +18,14 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import { useLocation } from "react-router-dom";
 
-
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const location = useLocation();
   const excludedPaths = ["", "register"];
-  const shouldDisplayFooter = !excludedPaths.includes(location.pathname.split("/")[1]);
+  const shouldDisplayFooter = !excludedPaths.includes(
+    location.pathname.split("/")[1]
+  );
   return shouldDisplayFooter ? (
     <MenuItem
       active={selected === title}
@@ -42,12 +43,15 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
 
 const Sidebar = () => {
   const theme = useTheme();
+  const token = localStorage.getItem("token");
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
   const location = useLocation();
   const excludedPaths = ["", "register"];
-  const shouldDisplayFooter = !excludedPaths.includes(location.pathname.split("/")[1]);
+  const shouldDisplayFooter = !excludedPaths.includes(
+    location.pathname.split("/")[1]
+  );
 
   return shouldDisplayFooter ? (
     <Box
@@ -88,7 +92,7 @@ const Sidebar = () => {
                 ml="15px"
               >
                 <Typography variant="h3" color={colors.grey[100]}>
-                  ADMINIS
+                  DASHBOARD
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
@@ -115,7 +119,9 @@ const Sidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  Ed Roh
+                  {token
+                    ? JSON.parse(atob(token.split(".")[1])).username
+                    : null}
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
                   VP Fancy Admin
@@ -147,13 +153,7 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-            <Item
-              title="Contacts Information"
-              to="/contacts"
-              icon={<ContactsOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
+
             <Item
               title="Invoices Balances"
               to="/invoices"
@@ -183,6 +183,21 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
+           {/* subemnu Article */}
+            <SubMenu
+              title="Articles"
+              icon={<ContactsOutlinedIcon />}
+              style={{ color: colors.grey[100] }}
+            >
+              <Item
+                title="Vacanow"
+                to="/vacanow"
+                icon={<ContactsOutlinedIcon />}
+                selected={selected}
+                setSelected={setSelected}
+              />
+              </SubMenu>
+
             <Item
               title="FAQ Page"
               to="/faq"
@@ -196,31 +211,31 @@ const Sidebar = () => {
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
-              Charts
+              Stats
             </Typography>
             <Item
-              title="Bar Chart"
+              title="Bar Stats"
               to="/bar"
               icon={<BarChartOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Pie Chart"
+              title="Pie Stats"
               to="/pie"
               icon={<PieChartOutlineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Line Chart"
+              title="Line Stats"
               to="/line"
               icon={<TimelineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Geography Chart"
+              title="Geography Stats"
               to="/geography"
               icon={<MapOutlinedIcon />}
               selected={selected}
@@ -230,7 +245,7 @@ const Sidebar = () => {
         </Menu>
       </ProSidebar>
     </Box>
-    ) : null;
-}
+  ) : null;
+};
 
 export default Sidebar;
