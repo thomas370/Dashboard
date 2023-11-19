@@ -78,7 +78,6 @@ router.get('/users', authMiddleware, async (req, res) => {
     const connection = await mysql.createConnection(dbConfig);
     try {
         const [rows] = await connection.execute('SELECT * FROM users');
-        console.log(rows);
         res.json(rows);
     } catch (error) {
         console.error(error);

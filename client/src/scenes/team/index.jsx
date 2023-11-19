@@ -18,37 +18,52 @@ const Team = () => {
     { field: "username", headerName: "Name", flex: 1 },
     { field: "email", headerName: "Email", flex: 1 },
     {
-      field: "accessLevel",
-      headerName: "Access Level",
+      field: "Access level",
+      headerName: "Access level",
       flex: 1,
-      renderCell: ({ row: { access } }) => {
-        return (
-          <Box
-            width="60%"
-            m="0 auto"
-            p="5px"
-            display="flex"
-            justifyContent="center"
-            backgroundColor={
-              access === "admin"
-                ? colors.greenAccent[600]
-                : access === "manager"
-                ? colors.greenAccent[700]
-                : colors.greenAccent[700]
-            }
-            borderRadius="4px"
-          >
-            {access === "admin" && <AdminPanelSettingsOutlinedIcon />}
-            {access === "manager" && <SecurityOutlinedIcon />}
-            {access === "user" && <LockOpenOutlinedIcon />}
-            <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
-              {access}
-            </Typography>
-          </Box>
-        );
+      renderCell: ({ row }) => {
+        const access = row.role;
+        return renderAccessLevelBox(access);
       },
     },
   ];
+
+  const renderAccessLevelBox = (access) => (
+    <Box
+      width="60%"
+      m="0 auto"
+      p="5px"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      backgroundColor={
+        access === "admin"
+          ? colors.greenAccent[600]
+          : access === "manager"
+          ? colors.greenAccent[700]
+          : colors.greenAccent[700]
+      }
+      borderRadius="4px"
+    >
+      {renderAccessLevelIcon(access)}
+      <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
+        {access}
+      </Typography>
+    </Box>
+  );
+
+  const renderAccessLevelIcon = (access) => {
+    switch (access) {
+      case "admin":
+        return <AdminPanelSettingsOutlinedIcon />;
+      case "manager":
+        return <SecurityOutlinedIcon />;
+      case "user":
+        return <LockOpenOutlinedIcon />;
+      default:
+        return null;
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -61,21 +76,16 @@ const Team = () => {
         const response = await fetch(process.env.REACT_APP_API_URL + "/users", {
           method: "GET",
           headers: {
-            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+            Authorization: token,
           },
         });
 
-        if (response.ok) {
-          const data = await response.json();
-          setUserData(data);
-        } else {
-          console.error("Error fetching data:", response.status);
-        }
-
+        const data = await response.json();
+        setUserData(data);
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching data:", error.message);
-        setLoading(false);
+        console.log(error);
       }
     };
 
