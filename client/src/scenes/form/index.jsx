@@ -20,7 +20,7 @@ const SiteForm = () => {
     });
 
       if (response.ok) {
-        toast("Site added");
+        toast.success("Site added");
         navigate("/formlist");
       } else {
         toast("Error while adding site maybe the name is already taken");
