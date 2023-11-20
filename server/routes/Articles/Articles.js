@@ -20,5 +20,31 @@ router.get('/sites', async (req, res) => {
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
-}
-);
+});
+
+router.post('/sitesadd', async (req, res) => {
+    const { nom } = req.body;
+
+    try {
+        const connection = await mysql.createConnection(dbConfig);
+
+        const [existingSites] = await connection.execute('SELECT * FROM sites WHERE nom = ?', [nom]);
+
+        if (existingSites.length > 0) {
+            res.status(409).json({ error: 'Site name already exists' });
+        } else {
+            await connection.execute('INSERT INTO sites (nom) VALUES (?)', [nom]);
+            res.status(201).json({ message: 'Site created successfully' });
+        }
+
+        connection.end();
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+
+
+module.exports = router;
+
