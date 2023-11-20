@@ -20,6 +20,7 @@ import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import { logout } from "../../utils/JWT";
 import { useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -267,7 +268,7 @@ const Sidebar = () => {
 
             }}
             className="logout-sidebar"
-            onClick={() => logout()}
+            onClick={() => logout(toast)}
           >
             <Typography>Logout</Typography>
           </MenuItem>

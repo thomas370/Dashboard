@@ -1,12 +1,11 @@
 import { Box, Button, TextField, Grid } from "@mui/material";
 import { Formik } from "formik";
 import * as yup from "yup";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const AddFaq = () => {
-  const isNonMobile = useMediaQuery("(min-width:600px)");
   const navigate = useNavigate();
 
   const handleFormSubmit = async (values) => {
@@ -20,10 +19,10 @@ const AddFaq = () => {
       });
 
       if (response.ok) {
-        console.log("FAQ added successfully");
+        toast.success("FAQ added successfully");
         navigate("/faq");
       } else {
-        console.error("Failed to add FAQ");
+        toast.error("Failed to add FAQ");
       }
     } catch (error) {
       console.error(error);

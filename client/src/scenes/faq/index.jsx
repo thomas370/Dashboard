@@ -10,6 +10,7 @@ import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import { tokens } from "../../theme";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const FAQ = () => {
   const theme = useTheme();
@@ -58,10 +59,10 @@ const FAQ = () => {
       );
 
       if (response.ok) {
-        // Actualise la liste après la suppression
+        toast.success("FAQ deleted successfully");
         fetchFaqs();
       } else {
-        console.error("Failed to delete FAQ");
+        toast.error("Failed to delete FAQ");
       }
     } catch (error) {
       console.error(error);
