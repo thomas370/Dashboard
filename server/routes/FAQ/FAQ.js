@@ -49,7 +49,7 @@ router.delete('/faqs/:id', async (req, res) => {
       await connection.execute('DELETE FROM faq WHERE id = ?', [faqId]);
       connection.end();
 
-      res.status(204).end(); // 204 No Content, indicating success with no response body
+      res.status(204).end();
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: 'Internal Server Error' });
