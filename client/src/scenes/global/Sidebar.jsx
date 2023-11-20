@@ -15,7 +15,9 @@ import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
+import { logout } from "../../utils/JWT";
 import { useLocation } from "react-router-dom";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
@@ -26,6 +28,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
   const shouldDisplayFooter = !excludedPaths.includes(
     location.pathname.split("/")[1]
   );
+
   return shouldDisplayFooter ? (
     <MenuItem
       active={selected === title}
@@ -241,6 +244,22 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
+            <Typography
+              variant="h6"
+              color={colors.grey[300]}
+              sx={{ m: "15px 0 5px 20px" }}
+            >
+              Logout
+            </Typography>
+            <Item
+              title="Logout"
+              icon={<ExitToAppOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              onClick={() => logout()}
+            />
+
+
           </Box>
         </Menu>
       </ProSidebar>

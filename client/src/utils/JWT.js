@@ -8,4 +8,4 @@ const logout = () => {
 
 window.addEventListener('beforeunload', logout);
 
-export { logout };
+export {logout};
