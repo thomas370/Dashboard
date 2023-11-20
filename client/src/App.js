@@ -17,6 +17,8 @@ import Login from "./scenes/login/Login";
 import Register from "./scenes/register/Register";
 import Geography from "./scenes/geography";
 import Articles from "./scenes/articles/Articles";
+import SiteList from "./scenes/sites/Sitelist";
+import SiteModif from "./scenes/sites/Sitemodif";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import Calendar from "./scenes/calendar/calendar";
@@ -68,6 +70,10 @@ function App() {
                 <PrivateRoute requiredRole="admin">
                 <Line />
                 </PrivateRoute> } />
+              <Route path="/sitemodif/:id" element={
+                <PrivateRoute requiredRole="admin">
+                <SiteModif />
+                </PrivateRoute> } />
               <Route path="/faq" element={
                 <PrivateRoute requiredRole="admin">
                 <FAQ />
@@ -79,6 +85,10 @@ function App() {
               <Route path="/calendar" element={
                 <PrivateRoute requiredRole="admin">
                 <Calendar />
+                </PrivateRoute> } />
+              <Route path="/formlist" element={
+                <PrivateRoute requiredRole="admin">
+                <SiteList />
                 </PrivateRoute> } />
               <Route path="/geography" element={
                 <PrivateRoute requiredRole="admin">

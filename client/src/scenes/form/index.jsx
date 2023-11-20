@@ -4,10 +4,11 @@ import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
 import { toast } from "react-toastify";
+const {useNavigate} = require("react-router-dom");
 
 const SiteForm = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
-
+  const navigate = useNavigate();
   const handleFormSubmit = async (values) => {
     try {
       const response = await fetch(process.env.REACT_APP_API_URL + "/sitesadd", {
@@ -20,6 +21,7 @@ const SiteForm = () => {
 
       if (response.ok) {
         toast("Site added");
+        navigate("/formlist");
       } else {
         toast("Error while adding site maybe the name is already taken");
       }
