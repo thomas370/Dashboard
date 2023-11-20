@@ -188,20 +188,13 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-           {/* subemnu Article */}
-            <SubMenu
-              title="Articles"
-              icon={<ContactsOutlinedIcon />}
-              style={{ color: colors.grey[100] }}
-            >
-              <Item
-                title="Vacanow"
-                to="/vacanow"
+            <Item
+                title="Article"
+                to="/Article"
                 icon={<ContactsOutlinedIcon />}
                 selected={selected}
                 setSelected={setSelected}
-              />
-              </SubMenu>
+            />
 
             <SubMenu
               title="FAQ"
