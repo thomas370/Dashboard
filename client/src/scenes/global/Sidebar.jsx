@@ -244,23 +244,20 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-            <Typography
-              variant="h6"
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
-              Logout
-            </Typography>
-            <Item
-              title="Logout"
-              icon={<ExitToAppOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-              onClick={() => logout()}
-            />
-
-
           </Box>
+          <MenuItem
+            icon={<ExitToAppOutlinedIcon />}
+            style={{
+              colors: colors.grey[100],
+              marginTop: "5px",
+
+            }}
+            className="logout-sidebar"
+            onClick={() => logout()}
+          >
+            <Typography>Logout</Typography>
+          </MenuItem>
+
         </Menu>
       </ProSidebar>
     </Box>
