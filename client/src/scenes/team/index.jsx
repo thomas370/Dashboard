@@ -102,7 +102,8 @@ const Team = () => {
             border: "none",
           },
           "& .MuiDataGrid-cell": {
-            borderBottom: "none",
+            // gris clair baisse opacité
+            borderBottom: "solid 1px rgba(224, 224, 224, 0.2)",
           },
           "& .MuiDataGrid-columnHeaders": {
             backgroundColor: colors.blueAccent[700],

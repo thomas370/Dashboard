@@ -53,7 +53,7 @@ const Invoices = () => {
             border: "none",
           },
           "& .MuiDataGrid-cell": {
-            borderBottom: "none",
+            borderBottom: "solid 1px rgba(224, 224, 224, 0.2)",
           },
           "& .name-column--cell": {
             color: colors.greenAccent[300],

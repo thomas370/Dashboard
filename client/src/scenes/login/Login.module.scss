@@ -3,74 +3,83 @@
 @import '../../assets/scss/_normalize.scss';
 @import '../../assets/responsive/_responsive.scss';
 
-.Login{
+.Login {
   background-image: url("../../assets/images/background.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  .container{
+
+  .container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    form{
-      padding: 2rem;
+
+    form {
+      padding: 20px; /* changed from 2rem to 20px */
       background: rgba(255, 255, 255, 0.2);
       border-radius: 16px;
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
       backdrop-filter: blur(3.1px);
       -webkit-backdrop-filter: blur(3.1px);
       border: 1px solid rgba(255, 255, 255, 0.3);
-      h1{
-        font-size: 2.5rem;
+
+      h1 {
+        font-size: 2rem; /* changed from 2.5rem to 2rem */
         font-weight: 900;
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem; /* changed from 2rem to 1.5rem */
         text-align: center;
       }
-      .form_group{
+
+      .form_group {
         display: flex;
         flex-direction: column;
-        label{
-           display: none;
+
+        label {
+          display: none;
         }
-        input{
+
+        input {
           padding: 1rem;
           border-radius: 1rem;
           border: none;
-          margin-bottom: 1.5rem;
-          font-size: 1.5rem;
+          margin-bottom: 1rem; /* changed from 1.5rem to 1rem */
+          font-size: 1rem; /* changed from 1.5rem to 1rem */
           font-weight: 700;
-          width: 30rem;
-            &:focus{
-                outline: none;
-            }
+          width: 300px; /* changed from 30rem to 300px */
+          &:focus {
+            outline: none;
+          }
         }
-        button{
-            margin-top: 2rem;
-            padding: 1rem;
-            border-radius: 1rem;
-            background-color: #1d5c68;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 700;
-            border: none;
-            cursor: pointer;
-            transition: all .3s ease-in-out;
-            font-family: 'Roboto', sans-serif;
-            &:hover{
-                background-color: lighten(#1d5c68, 10%);
-            }
+
+        button {
+          margin-top: 1.5rem; /* changed from 2rem to 1.5rem */
+          padding: 1rem;
+          border-radius: 1rem;
+          background-color: #1d5c68;
+          color: white;
+          font-size: 1rem; /* changed from 1.5rem to 1rem */
+          font-weight: 700;
+          border: none;
+          cursor: pointer;
+          transition: all 0.3s ease-in-out;
+          font-family: 'Roboto', sans-serif;
+          &:hover {
+            background-color: lighten(#1d5c68, 10%);
+          }
         }
-        p{
+
+        p {
           text-align: center;
           font-weight: 700;
-          font-size: 1.5rem;
-          a{
+          font-size: 1rem; /* changed from 1.5rem to 1rem */
+
+          a {
             display: block;
             color: white;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1.5rem;
+            font-size: 1rem; /* changed from 1.5rem to 1rem */
           }
         }
       }
