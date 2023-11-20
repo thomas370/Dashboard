@@ -17,10 +17,12 @@ app.use(bodyParser.json());
 
 const usersRoutes = require('./routes/Users/Users');
 const faqRoutes = require('./routes/FAQ/FAQ');
+const articlesRoutes = require('./routes/Articles/Articles');
 
 
 app.use(usersRoutes);
 app.use(faqRoutes);
+app.use(articlesRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
