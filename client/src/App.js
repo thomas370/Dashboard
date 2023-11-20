@@ -9,6 +9,7 @@ import Invoices from "./scenes/invoices";
 import Contacts from "./scenes/contacts";
 import Bar from "./scenes/bar";
 import Form from "./scenes/form";
+import AddFaq from "./scenes/form/addFaq";
 import Line from "./scenes/line";
 import Pie from "./scenes/pie";
 import FAQ from "./scenes/faq";
@@ -70,6 +71,10 @@ function App() {
               <Route path="/faq" element={
                 <PrivateRoute requiredRole="admin">
                 <FAQ />
+                </PrivateRoute> } />
+              <Route path="/addfaq" element={
+                <PrivateRoute requiredRole="admin">
+                <AddFaq />
                 </PrivateRoute> } />
               <Route path="/calendar" element={
                 <PrivateRoute requiredRole="admin">

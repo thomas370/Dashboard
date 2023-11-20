@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const mysql = require('mysql2/promise');
 const authMiddleware = require('../../UtilServer/AuthMiddleware');
+const { promisify } = require('util');
 
 const router = express.Router();
 const dbConfig = {
@@ -85,9 +86,5 @@ router.get('/users', authMiddleware, async (req, res) => {
         await connection.end();
     }
 });
-
-
-
-
 
 module.exports = router;

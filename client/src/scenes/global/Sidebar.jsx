@@ -14,6 +14,7 @@ import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
+import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
@@ -201,6 +202,11 @@ const Sidebar = () => {
               />
               </SubMenu>
 
+            <SubMenu
+              title="FAQ"
+              icon={<HelpOutlineOutlinedIcon />}
+              style={{ color: colors.grey[100] }}
+              >
             <Item
               title="FAQ Page"
               to="/faq"
@@ -208,6 +214,14 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
+            <Item
+              title="Add FAQ"
+              to="/addfaq"
+              icon={<AddOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            </SubMenu>
 
             <Typography
               variant="h6"
