@@ -145,7 +145,8 @@ const Articlesadd = () => {
               ]}
               placeholder="Write something amazing..."
               style={{
-                marginBottom: "20px",
+                marginBottom: "60px",
+                height: "200px",
               }}
             />
 
