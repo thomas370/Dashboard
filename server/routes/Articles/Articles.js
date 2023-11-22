@@ -9,3 +9,6 @@ const dbConfig = {
     database: process.env.DB_NAME,
 };
 
+const JWT_SECRET = process.env.JWT_SECRET;
+
+

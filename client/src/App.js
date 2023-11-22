@@ -13,6 +13,7 @@ import AddFaq from "./scenes/form/addFaq";
 import Line from "./scenes/line";
 import Pie from "./scenes/pie";
 import FAQ from "./scenes/faq";
+import Articlesadd from "./scenes/form/addArticle";
 import Login from "./scenes/login/Login";
 import Register from "./scenes/register/Register";
 import Geography from "./scenes/geography";
@@ -38,66 +39,134 @@ function App() {
             <Routes>
               <Route path="/" element={<Login />} />
               <Route path="/Register" element={<Register />} />
-              <Route path="/admin" element={
-                <PrivateRoute requiredRole="admin">
-                <Dashboard />
-                </PrivateRoute> } />
-              <Route path="/team" element={
-                <PrivateRoute requiredRole="admin">
-                <Team />
-                </PrivateRoute> } />
-              <Route path="/contacts" element={
-                <PrivateRoute requiredRole="admin">
-                <Contacts />
-                </PrivateRoute> } />
-              <Route path="/invoices" element={
-                <PrivateRoute requiredRole="admin">
-                <Invoices />
-                </PrivateRoute> } />
-              <Route path="/form" element={
-                <PrivateRoute requiredRole="admin">
-                <Form />
-                </PrivateRoute> } />
-              <Route path="/bar" element={
-                <PrivateRoute requiredRole="admin">
-                <Bar />
-                </PrivateRoute> } />
-              <Route path="/pie" element={
-                <PrivateRoute requiredRole="admin">
-                <Pie />
-                </PrivateRoute> } />
-              <Route path="/line" element={
-                <PrivateRoute requiredRole="admin">
-                <Line />
-                </PrivateRoute> } />
-              <Route path="/sitemodif/:id" element={
-                <PrivateRoute requiredRole="admin">
-                <SiteModif />
-                </PrivateRoute> } />
-              <Route path="/faq" element={
-                <PrivateRoute requiredRole="admin">
-                <FAQ />
-                </PrivateRoute> } />
-              <Route path="/addfaq" element={
-                <PrivateRoute requiredRole="admin">
-                <AddFaq />
-                </PrivateRoute> } />
-              <Route path="/calendar" element={
-                <PrivateRoute requiredRole="admin">
-                <Calendar />
-                </PrivateRoute> } />
-              <Route path="/formlist" element={
-                <PrivateRoute requiredRole="admin">
-                <SiteList />
-                </PrivateRoute> } />
-              <Route path="/geography" element={
-                <PrivateRoute requiredRole="admin">
-                <Geography />
-                </PrivateRoute> } />
-              <Route path="/Articles" element={
-                <PrivateRoute requiredRole="admin">
-                <Articles />
-                </PrivateRoute> } />
+              <Route
+                path="/admin"
+                element={
+                  <PrivateRoute requiredRole="admin">
+                    <Dashboard />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/team"
+                element={
+                  <PrivateRoute requiredRole="admin">
+                    <Team />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/contacts"
+                element={
+                  <PrivateRoute requiredRole="admin">
+                    <Contacts />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/invoices"
+                element={
+                  <PrivateRoute requiredRole="admin">
+                    <Invoices />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/form"
+                element={
+                  <PrivateRoute requiredRole="admin">
+                    <Form />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/bar"
+                element={
+                  <PrivateRoute requiredRole="admin">
+                    <Bar />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/pie"
+                element={
+                  <PrivateRoute requiredRole="admin">
+                    <Pie />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/line"
+                element={
+                  <PrivateRoute requiredRole="admin">
+                    <Line />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/sitemodif/:id"
+                element={
+                  <PrivateRoute requiredRole="admin">
+                    <SiteModif />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/faq"
+                element={
+                  <PrivateRoute requiredRole="admin">
+                    <FAQ />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/addfaq"
+                element={
+                  <PrivateRoute requiredRole="admin">
+                    <AddFaq />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/addArticle"
+                element={
+                  <PrivateRoute requiredRole="admin">
+                    <Articlesadd />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/calendar"
+                element={
+                  <PrivateRoute requiredRole="admin">
+                    <Calendar />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/formlist"
+                element={
+                  <PrivateRoute requiredRole="admin">
+                    <SiteList />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/geography"
+                element={
+                  <PrivateRoute requiredRole="admin">
+                    <Geography />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/Article"
+                element={
+                  <PrivateRoute requiredRole="admin">
+                    <Articles />
+                  </PrivateRoute>
+                }
+              />
             </Routes>
           </main>
         </div>

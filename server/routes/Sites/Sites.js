@@ -103,5 +103,41 @@ router.put('/sites/:id', async (req, res) => {
     }
 });
 
+// ARTICLES
+
+router.get('/articles', async (req, res) => {
+    const connection = await mysql.createConnection(dbConfig);
+    try {
+        const [rows] = await connection.execute('SELECT * FROM articles');
+        res.json(rows);
+    } catch (error) {
+        res.status(500).send('Error retrieving articles');
+    } finally {
+        await connection.end();
+    }
+});
+
+router.post('/articlesadd', async (req, res) => {
+    const { title, description, content, image, site } = req.body;
+
+    const currentDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
+
+    const connection = await mysql.createConnection(dbConfig);
+
+    try {
+        const [rows] = await connection.execute(
+            'INSERT INTO articles (title, description, content, image, date_creation, date_update, site) VALUES (?, ?, ?, ?, ?, ?, ?)',
+            [title, description, content, image, currentDate, currentDate, site]
+        );
+
+        res.json({ message: 'Article added successfully', articleId: rows.insertId });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error adding articles');
+    } finally {
+        connection.end();
+    }
+});
+
 module.exports = router;
 

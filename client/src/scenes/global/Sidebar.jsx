@@ -202,13 +202,26 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-            <Item
+            <SubMenu
                 title="Article"
-                to="/Article"
                 icon={<ContactsOutlinedIcon />}
-                selected={selected}
-                setSelected={setSelected}
-            />
+                style={{ color: colors.grey[100] }}
+            >
+                <Item
+                    title="Article list"
+                    to="/article"
+                    icon={<ContactsOutlinedIcon />}
+                    selected={selected}
+                    setSelected={setSelected}
+                />
+                <Item
+                    title="Add Article"
+                    to="/addArticle"
+                    icon={<AddOutlinedIcon />}
+                    selected={selected}
+                    setSelected={setSelected}
+                />
+            </SubMenu>
 
             <SubMenu
               title="FAQ"
