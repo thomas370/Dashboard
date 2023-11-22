@@ -143,13 +143,10 @@ const Articlesadd = () => {
                 "link",
                 "image",
               ]}
-                placeholder="Write something amazing..."
-
+              placeholder="Write something amazing..."
               style={{
-                backgroundColor: "#293040",
                 marginBottom: "20px",
-
-                }}
+              }}
             />
 
             <TextField
