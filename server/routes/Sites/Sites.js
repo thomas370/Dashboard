@@ -139,5 +139,66 @@ router.post('/articlesadd', async (req, res) => {
     }
 });
 
+router.delete('/articles/:id', async (req, res) => {
+    const articleId = req.params.id;
+
+    const connection = await mysql.createConnection(dbConfig);
+
+    try {
+        await connection.execute('DELETE FROM articles WHERE id = ?', [articleId]);
+        res.json({ message: 'Article deleted successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error deleting articles');
+    } finally {
+        connection.end();
+    }
+});
+
+router.get('/articles/:id', async (req, res) => {
+    const articleId = req.params.id;
+
+    const connection = await mysql.createConnection(dbConfig);
+
+    try {
+        const [rows] = await connection.execute('SELECT * FROM articles WHERE id = ?', [articleId]);
+
+        if (rows.length === 0) {
+            return res.status(404).json({ error: 'Article not found' });
+        }
+
+        res.json(rows[0]);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error retrieving articles');
+    } finally {
+        connection.end();
+    }
+});
+
+router.put('/articles/:id', async (req, res) => {
+    const articleId = req.params.id;
+    const { title, description, content, image, site } = req.body;
+
+    const currentDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
+
+    const connection = await mysql.createConnection(dbConfig);
+
+    try {
+        await connection.execute(
+            'UPDATE articles SET title = ?, description = ?, content = ?, image = ?, date_update = ?, site = ? WHERE id = ?',
+            [title, description, content, image, currentDate, site, articleId]
+        );
+
+        res.json({ message: 'Article updated successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error updating articles');
+    } finally {
+        connection.end();
+    }
+});
+
+
 module.exports = router;
 

@@ -18,6 +18,7 @@ import Login from "./scenes/login/Login";
 import Register from "./scenes/register/Register";
 import Geography from "./scenes/geography";
 import Articles from "./scenes/articles/Articles";
+import ArticleEdit from "./scenes/articles/modifArticles";
 import SiteList from "./scenes/sites/Sitelist";
 import SiteModif from "./scenes/sites/Sitemodif";
 import { CssBaseline, ThemeProvider } from "@mui/material";
@@ -124,6 +125,14 @@ function App() {
                 element={
                   <PrivateRoute requiredRole="admin">
                     <AddFaq />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/editarticle/:id"
+                element={
+                  <PrivateRoute requiredRole="admin">
+                    <ArticleEdit />
                   </PrivateRoute>
                 }
               />
