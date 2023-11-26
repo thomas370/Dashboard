@@ -23,10 +23,6 @@ app.use(usersRoutes);
 app.use(faqRoutes);
 app.use(sitesRoutes);
 
-app.use('/login', usersRoutes);
-app.use('/register', usersRoutes);
-
-
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
