@@ -115,12 +115,13 @@ const Articles = () => {
         Add Article
       </Button>
 
-      <FormControl>
+      <FormControl sx={{ marginLeft: '20px' }}>
         <Select
           value={selectedSite || ""}
           onChange={handleSiteChange}
           displayEmpty
-        >
+          sx={{ height: '35px' }}
+          >
           <MenuItem value="" disabled>
             Choisissez un site
           </MenuItem>

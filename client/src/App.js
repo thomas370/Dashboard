@@ -21,6 +21,8 @@ import Articles from "./scenes/articles/Articles";
 import ArticleEdit from "./scenes/articles/modifArticles";
 import SiteList from "./scenes/sites/Sitelist";
 import SiteModif from "./scenes/sites/Sitemodif";
+import Settings from "./scenes/settings/settings";
+import Profile from "./scenes/profile/profile";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import Calendar from "./scenes/calendar/calendar";
@@ -53,6 +55,22 @@ function App() {
                 element={
                   <PrivateRoute requiredRole="admin">
                     <Team />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/profile"
+                element={
+                  <PrivateRoute requiredRole="admin">
+                    <Profile />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/settings"
+                element={
+                  <PrivateRoute requiredRole="admin">
+                    <Settings />
                   </PrivateRoute>
                 }
               />

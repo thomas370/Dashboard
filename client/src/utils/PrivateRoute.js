@@ -10,7 +10,7 @@ function PrivateRoute({ children, adminOnly = false, ...rest }) {
 
     useEffect(() => {
         async function fetchUserRole() {
-            const response = await fetch('http://localhost:5000/user-role', {
+            const response = await fetch(process.env.REACT_APP_API_URL + '/user-role', {
                 headers: {
                     'authorization': token
                 }

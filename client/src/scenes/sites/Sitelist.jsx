@@ -35,8 +35,7 @@ const SiteList = () => {
 
             if (response.ok) {
                 toast.success("Site deleted");
-                const updatedSites = sites.filter((site) => site.id !== siteId);
-                setSites(updatedSites);
+                setSites((prevSites) => prevSites.filter((site) => site.id !== siteId));
             } else {
                 toast.error("Error while deleting site");
             }

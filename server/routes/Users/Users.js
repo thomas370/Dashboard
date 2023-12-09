@@ -2,7 +2,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const mysql = require('mysql2/promise');
-const authMiddleware = require('../../UtilServer/AuthMiddleware');
+const authMiddleware = require('../../utilserver/AuthMiddleware');
 const { promisify } = require('util');
 
 const router = express.Router();
