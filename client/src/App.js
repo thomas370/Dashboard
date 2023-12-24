@@ -26,6 +26,7 @@ import Profile from "./scenes/profile/profile";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import Calendar from "./scenes/calendar/calendar";
+import VueArticles from "./scenes/articles/vueArticles";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -55,6 +56,14 @@ function App() {
                 element={
                   <PrivateRoute requiredRole="admin">
                     <Team />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/vueArticles/:id"
+                element={
+                  <PrivateRoute requiredRole="admin">
+                    <VueArticles />
                   </PrivateRoute>
                 }
               />

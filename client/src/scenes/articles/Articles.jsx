@@ -145,7 +145,7 @@ const Articles = () => {
           .reverse()
           .map((article) => (
             <Card key={article.id} style={{ margin: "10px" }}>
-              <CardContent>
+              <CardContent style={{cursor:"pointer"}} onClick={() => navigate(`/vueArticles/${article.id}`)}>
                 {article.image instanceof Blob && (
                   <img src={URL.createObjectURL(article.image)} alt="article" />
                 )}

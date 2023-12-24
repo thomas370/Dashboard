@@ -1,4 +1,3 @@
-# Dockerfile in client folder
 FROM node:14
 
 WORKDIR /usr/src/app/client
