@@ -41,7 +41,7 @@ const Articlesadd = () => {
       const dataToSend = {
         ...values,
         site: parseInt(values.site),
-        content: `${values.content}\n\n${chatGPTResponse}`,
+        content: content,
       };
 
       const response = await fetch(
