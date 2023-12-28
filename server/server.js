@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const axios = require('axios');
 const OpenAI = require('openai');
 
 require('dotenv').config();
@@ -27,25 +26,24 @@ const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
 
 app.post('/chatgpt', async (req, res) => {
     try {
-      const { question, content } = req.body;
+        const { question, content } = req.body;
+        console.log('Question:', question);
 
-      const response = await openai.chat.completions.create({
-        messages: [
-          { role: 'system', content: 'You are a helpful assistant.' },
-          { role: 'user', content: question },
-          { role: 'assistant', content: content },
-        ],
-        model: 'gpt-3.5-turbo',
-      });
+        const response = await openai.chat.completions.create({
+            messages: [
+                { role: 'system', content: 'You are a helpful assistant.' },
+                { role: 'user', content: question },
+            ],
+            model: 'gpt-3.5-turbo',
+        });
+        console.log('Message content:', response.choices[0].message);
 
-      const chatGPTResponse = response.choices[0].message.content.trim();
-      res.json({ chatGPTResponse });
+        res.json({ chatGPTResponse: response.choices[0].message.content });
     } catch (error) {
-      console.error('Error processing ChatGPT request:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
+        console.error('Error processing ChatGPT request:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 });
-
 
 app.use(usersRoutes);
 app.use(notifsRoutes);

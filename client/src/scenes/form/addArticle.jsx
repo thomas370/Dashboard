@@ -76,32 +76,32 @@ const Articlesadd = () => {
 
   const generateChatGPTResponse = async (question) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/chatgpt`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ question }),
-      });
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/chatgpt`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ question }),
+        });
 
-      if (response.ok) {
-        const data = await response.json();
-        return data.response;
-      } else {
-        console.error('Error fetching ChatGPT response:', response.status);
-        return 'Error fetching response';
-      }
+        if (response.ok) {
+            const data = await response.json();
+            setChatGPTResponse(data.chatGPTResponse);
+            setContent(`${content}\n\n${data.chatGPTResponse}`); // Mise à jour du contenu de l'éditeur
+        } else {
+            console.error('Error fetching ChatGPT response:', response.status);
+            setChatGPTResponse('Error fetching response');
+        }
     } catch (error) {
-      console.error('Error fetching ChatGPT response:', error);
-      return 'Error fetching response';
+        console.error('Error fetching ChatGPT response:', error);
+        setChatGPTResponse('Error fetching response');
     }
-  };
+};
 
-  const handleAskQuestion = async () => {
-    const newChatGPTResponse = await generateChatGPTResponse(question);
-    setChatGPTResponse(newChatGPTResponse);
-    setContent(`${content}\n\n${newChatGPTResponse}`);
-  };
+const handleAskQuestion = async () => {
+    await generateChatGPTResponse(question);
+};
+
 
   return (
     <Box m="20px">
@@ -154,6 +154,7 @@ const Articlesadd = () => {
               sx={{ mb: 2 }}
             />
             <ReactQuill
+
               value={content}
               onChange={handleContentChange}
               modules={{
