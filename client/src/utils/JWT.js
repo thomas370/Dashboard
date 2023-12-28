@@ -1,4 +1,3 @@
-import { toast } from 'react-toastify';
 
 const logout = (toast) => {
     localStorage.removeItem('token');

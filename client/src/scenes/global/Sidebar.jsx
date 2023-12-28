@@ -18,7 +18,6 @@ import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
-import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import { logout } from "../../utils/JWT";
 import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";

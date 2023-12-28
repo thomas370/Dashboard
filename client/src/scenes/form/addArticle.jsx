@@ -12,9 +12,10 @@ import * as yup from "yup";
 
 const Articlesadd = () => {
   const navigate = useNavigate();
-  const [site, setSite] = useState(null);
   const [sitesList, setSitesList] = useState([]);
   const [content, setContent] = useState("");
+  const [chatGPTResponse, setChatGPTResponse] = useState("");
+  const [question, setQuestion] = useState("");
 
   useEffect(() => {
     const fetchSitesList = async () => {
@@ -37,7 +38,11 @@ const Articlesadd = () => {
 
   const handleFormSubmit = async (values) => {
     try {
-      const dataToSend = { ...values, site: parseInt(values.site), content };
+      const dataToSend = {
+        ...values,
+        site: parseInt(values.site),
+        content: `${values.content}\n\n${chatGPTResponse}`,
+      };
 
       const response = await fetch(
         `${process.env.REACT_APP_API_URL}/articlesadd`,
@@ -63,6 +68,39 @@ const Articlesadd = () => {
 
   const handleContentChange = (value) => {
     setContent(value);
+  };
+
+  const handleQuestionChange = (event) => {
+    setQuestion(event.target.value);
+  };
+
+  const generateChatGPTResponse = async (question) => {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/chatgpt`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ question }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        return data.response;
+      } else {
+        console.error('Error fetching ChatGPT response:', response.status);
+        return 'Error fetching response';
+      }
+    } catch (error) {
+      console.error('Error fetching ChatGPT response:', error);
+      return 'Error fetching response';
+    }
+  };
+
+  const handleAskQuestion = async () => {
+    const newChatGPTResponse = await generateChatGPTResponse(question);
+    setChatGPTResponse(newChatGPTResponse);
+    setContent(`${content}\n\n${newChatGPTResponse}`);
   };
 
   return (
@@ -167,6 +205,20 @@ const Articlesadd = () => {
                 </MenuItem>
               ))}
             </TextField>
+
+            <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Ask a Question"
+                onBlur={handleQuestionChange}
+                onChange={handleQuestionChange}
+                value={question}
+                sx={{ mb: 2 }}
+              />
+              <Button variant="contained" color="primary" onClick={handleAskQuestion}>
+                Ask Question
+              </Button>
 
             <Button variant="contained" color="secondary" type="submit">
               Submit

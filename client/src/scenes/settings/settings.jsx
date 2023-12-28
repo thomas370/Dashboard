@@ -14,10 +14,6 @@ const Settings = () => {
     // Peut-être en utilisant un état supplémentaire
   };
 
-  const handleNotificationsToggle = () => {
-    // Ajoutez votre logique pour gérer les notifications ici
-    // Peut-être en utilisant un état supplémentaire
-  };
 
   return (
     <Box>
@@ -50,7 +46,7 @@ const Settings = () => {
                   color="textSecondary"
                   sx={{ marginLeft: "10px" }}
                 >
-                  (Coming soon)
+                  (Disponible)
                 </Typography>
               </Box>
             }
@@ -73,34 +69,6 @@ const Settings = () => {
             label={
               <Box display="flex" alignItems="center">
                 <Typography variant="body1">ChatGPT</Typography>
-                <Typography
-                  variant="body2"
-                  color="textSecondary"
-                  sx={{ marginLeft: "10px" }}
-                >
-                  (Coming soon)
-                </Typography>
-              </Box>
-            }
-          />
-        </Box>
-      </Paper>
-
-      <Paper elevation={3} style={{ padding: "20px", marginTop: "20px" }}>
-        <Typography variant="h4">Notifications</Typography>
-        <Box mt={2}>
-          <Typography variant="body1">Receive notifications</Typography>
-          <FormControlLabel
-            control={
-              <Switch
-                checked='false'
-                onChange={handleNotificationsToggle}
-              />
-            }
-            labelPlacement="start"
-            label={
-              <Box display="flex" alignItems="center">
-                <Typography variant="body1">Notifications</Typography>
                 <Typography
                   variant="body2"
                   color="textSecondary"
